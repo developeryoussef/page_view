@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:page_view/controller/constantPart.dart';
 import 'package:page_view/controller/onBoardingController.dart';
 
 import '../controller/pageViewController.dart';
@@ -13,22 +14,24 @@ class PageViewScrn extends GetView<OnBoardingControllerImp> {
   Widget build(BuildContext context) {
     OnBoardingControllerImp controllerImp = Get.put(OnBoardingControllerImp());
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 255, 255),
-      body: SafeArea(
-          child: GetBuilder<PageViewController>(
-        init: PageViewController(),
-        builder: (controller) {
-          return PageView.builder(
-            onPageChanged: (value) {
-              controllerImp.onPageChanged(value);
-            },
-            itemCount: controller.pageView.length,
-            itemBuilder: (context, index) {
-              return controller.pageView[index];
-            },
-          );
-        },
-      )),
-    );
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        body: SafeArea(
+            child: Column(
+          children: [
+            Expanded(
+              flex: 11,
+              child: PageView.builder(
+                onPageChanged: (value) {
+                  controllerImp.onPageChanged(value);
+                },
+                itemCount: pageView.length,
+                itemBuilder: (context, index) {
+                  return pageView[index];
+                },
+              ),
+            ),
+            Expanded(flex: 3, child: ConstantPart()),
+          ],
+        )));
   }
 }

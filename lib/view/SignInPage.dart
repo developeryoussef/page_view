@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:page_view/view/signInUpPage.dart';
+import 'package:page_view/widget/imagePicking.dart';
 import 'package:page_view/widget/textFormField.dart';
 import 'package:image_picker/image_picker.dart';
 import '../widget/sized_box.dart';
@@ -42,6 +43,7 @@ class SignInPage extends StatelessWidget {
                       color: Colors.purple.shade500),
                 ),
               ),
+              MyWidget(),
               szd23,
               MyTextFormField(
                   type: TextInputType.name,

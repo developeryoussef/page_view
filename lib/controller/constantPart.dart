@@ -3,7 +3,6 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/get_core.dart';
-import 'package:page_view/controller/constantPart.dart';
 import 'package:page_view/controller/onBoardingController.dart';
 import 'package:page_view/controller/pageViewController.dart';
 import 'package:page_view/controller/pageViewpointsController.dart';
@@ -11,34 +10,36 @@ import 'package:page_view/view/signInUpPage.dart';
 import 'package:page_view/widget/Image.dart';
 import 'package:page_view/widget/sized_box.dart';
 
-class PageViewSystem extends StatelessWidget {
-  final Widget widget1;
-  final Widget widget2;
-  final ImageofonBoarding widget3;
+class ConstantPart extends StatelessWidget {
+  const ConstantPart({Key? key}) : super(key: key);
 
-  PageViewSystem(
-      {required this.widget1, required this.widget2, required this.widget3});
   @override
   Widget build(BuildContext context) {
-    return PageView(
-      controller: PageController(),
+    return Column(
       children: [
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 57,
+        PageViewSlider(),
+        szd23,
+        GestureDetector(
+          onTap: () {
+            Get.to(SgnIUpage());
+          },
+          child: Container(
+            height: 50,
+            width: 300,
+            child: Center(
+                child: Text(
+              'Go to the Login page',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            )),
+            decoration: BoxDecoration(
+              color: Colors.purple.shade500,
+              borderRadius: BorderRadius.circular(25),
             ),
-            widget3,
-            szd40,
-            widget1,
-            SizedBox(
-              height: 40,
-            ),
-            widget2,
-            szd40,
-          ],
+          ),
         ),
       ],
     );
